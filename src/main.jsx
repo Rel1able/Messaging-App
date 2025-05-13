@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import { Context } from './context/AppContext';
 
 const router = createBrowserRouter([
   {
@@ -11,5 +12,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}></RouterProvider>
+  <Context>
+      <RouterProvider router={router}></RouterProvider>
+  </Context>
 )
