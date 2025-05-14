@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./context/AppContext";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/NavBar";
+import Contacts from "./components/Contacts";
 function App() {
 
   const { API_URL } = useContext(AppContext);
@@ -13,10 +16,11 @@ function App() {
   }, [])
   
   return (
-    <>
-      <h1>No way</h1>
-      <h2>{API_URL}</h2>
-    </>
+    <div className="app-container">
+      <Navbar />
+      <Contacts/>
+      <Outlet/>
+    </div>
   )
 }
 
