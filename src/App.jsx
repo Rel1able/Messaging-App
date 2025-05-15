@@ -4,12 +4,12 @@ import Contacts from "./components/Contacts";
 import { useEffect } from "react";
 function App() {
   const navigate = useNavigate();
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (!user) {
-      navigate("/sign-up")
-    }
-  })
+  const user = localStorage.getItem("user");
+    useEffect(() => {
+      if (!user) {
+        navigate("/log-in")
+      }
+    }, [])
   return (
     <div className="app-container">
       <div className="chat-container">

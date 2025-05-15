@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function SignUp() {
 
@@ -37,6 +37,8 @@ export default function SignUp() {
         }
     }
     return (
+        <>
+        <h1>Please create account</h1>
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="firstName">First Name</label>
@@ -68,6 +70,8 @@ export default function SignUp() {
                     </ul>
                 )
             }
-        </form>
+            </form>
+            <h4>Already have an account? <Link to="/log-in">Log in</Link></h4>
+            </>
     )
 }

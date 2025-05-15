@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 export default function Login() {
@@ -31,6 +31,8 @@ export default function Login() {
     }
 
     return (
+        <>
+            <h1>Please log in</h1>
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="username">Username</label>
@@ -42,6 +44,8 @@ export default function Login() {
             </div>
             <button type="submit">Log in</button>
             {error && <p>{error}</p>}
-        </form>
+            </form>
+            <h4>Don't have the account yet? <Link to="/sign-up">Sign up</Link></h4>
+            </>
     )
 }
