@@ -7,9 +7,20 @@ body, html{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 .app-container{
     display: flex;
     justify-content: space-between;
+    height: 100%;
+}
+
+.chat-container{
+    display: flex;
+}
+
+#root{
+    height: 100%;
 }

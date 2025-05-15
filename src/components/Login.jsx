@@ -1,0 +1,47 @@
+import { useState, useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
+
+
+export default function Login() {
+    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const { API_URL } = useContext(AppContext);
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const req = await fetch(`${API_URL}/auth/log-in`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password })
+        })
+        const res = await req.json();
+        if (!req.ok) {
+            setError("You have entered the wrong username or password. Please try again.")
+        } else {
+            setError("");
+            localStorage.setItem("user", res.user);
+            navigate("/");
+        }
+        console.log(res);
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" required onChange={e => setUsername(e.target.value)} />
+            </div>
+            <div>
+                <label htmlFor="password">Password</label>
+                <input type="text" id="password" required onChange={e => setPassword(e.target.value)} />
+            </div>
+            <button type="submit">Log in</button>
+            {error && <p>{error}</p>}
+        </form>
+    )
+}

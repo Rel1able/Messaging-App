@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Context } from './context/AppContext';
 import Chat from './components/Chat';
 import ErrorPage from './components/ErrorPage';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,6 +16,14 @@ const router = createBrowserRouter([
       { path: "/", element: <Chat /> },
     ],
     errorElement: <ErrorPage/>
+  },
+  {
+    path: "/sign-up",
+    element: <SignUp/>
+  },
+  {
+    path: "/log-in",
+    element: <Login/>
   }
 ])
 

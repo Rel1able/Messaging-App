@@ -1,24 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "./context/AppContext";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import Contacts from "./components/Contacts";
+import { useEffect } from "react";
 function App() {
-
-  const { API_URL } = useContext(AppContext);
+  const navigate = useNavigate();
   useEffect(() => {
-    async function testServer() {
-      const req = await fetch(`${API_URL}/ping`)
-      const res = await req.json();
-      console.log("Response: ", res)
+    const user = localStorage.getItem("user");
+    if (!user) {
+      navigate("/sign-up")
     }
-    testServer();
-  }, [])
-  
+  })
   return (
     <div className="app-container">
-      <Navbar />
-      <Contacts/>
+      <div className="chat-container">
+        <Navbar />
+        <Contacts/>
+      </div>
       <Outlet/>
     </div>
   )
