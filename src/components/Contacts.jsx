@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import styles from "../styles/contacts.module.css";
 
 export default function Contacts() {
     const { API_URL } = useContext(AppContext);
@@ -23,9 +24,9 @@ export default function Contacts() {
     }, [])
 
     return (
-        users.length > 0 ? <ul>
-            {users.map((user) => {
-                return <li>
+        users.length > 0 ? <ul className={styles.contactsList}>
+            {users.map((user, id) => {
+                return <li key={id}>
                     <Link to={`/${user.id}`}>
                         {user.username}
                         {user.status}

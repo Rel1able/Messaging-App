@@ -1,0 +1,13 @@
+.contactsList{
+    background-color: rgb(59, 0, 102);
+    height: 100%;
+    padding: 2rem;
+    margin: 0;
+    list-style-type: none;
+}
+
+.contactsList a{
+    color: rgb(242, 116, 116);
+    text-decoration: none;
+
+}

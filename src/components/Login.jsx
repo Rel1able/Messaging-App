@@ -41,7 +41,7 @@ export default function Login() {
             </div>
             <div>
                 <label htmlFor="password">Password</label>
-                <input type="text" id="password" required onChange={e => setPassword(e.target.value)} />
+                <input type="password" id="password" required onChange={e => setPassword(e.target.value)} />
             </div>
             <button type="submit">Log in</button>
             {error && <p>{error}</p>}
