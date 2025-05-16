@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import {Link} from "react-router-dom";
 
 export default function Contacts() {
     const { API_URL } = useContext(AppContext);
@@ -7,7 +8,7 @@ export default function Contacts() {
     useEffect(() => {
         async function getUsers() {
             try {
-                const req = await fetch(`${API_URL}/users`);
+                const req = await fetch(`${API_URL}/users`, {credentials: "include"});
                 if (!req.ok) {
                     throw new Error("Failed to get the data")
                 }
@@ -15,7 +16,7 @@ export default function Contacts() {
                 console.log(res.users);
                 setUsers(res.users);
             } catch (err) {
-                console.err(err);
+                console.error(err);
             }
         }
         getUsers();
@@ -25,8 +26,11 @@ export default function Contacts() {
         users.length > 0 ? <ul>
             {users.map((user) => {
                 return <li>
-                    {user.username}
-                    {user.status}
+                    <Link to={`/${user.id}`}>
+                        {user.username}
+                        {user.status}
+                    </Link>
+                    
                 </li>
             })}
         </ul> : <div>Loading...</div>

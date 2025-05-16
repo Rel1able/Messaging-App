@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Chat /> },
+      { path: "/:userId", element: <Chat /> },
     ],
     errorElement: <ErrorPage/>
   },
