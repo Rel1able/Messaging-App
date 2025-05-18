@@ -7,13 +7,16 @@ import Chat from './components/Chat';
 import ErrorPage from './components/ErrorPage';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-
+import Profile from './components/Profile';
+import Users from './components/Users';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/:userId", element: <Chat /> },
+      { path: "/chat/:userId", element: <Chat /> },
+      { path: "/profile/:userId", element: <Profile /> },
+      {path: "/users", element: <Users/>}
     ],
     errorElement: <ErrorPage/>
   },

@@ -1,0 +1,36 @@
+import { useParams, Link } from "react-router-dom"
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
+export default function Profile() {
+    const [user, setUser] = useState({});
+    const { API_URL } = useContext(AppContext);    
+    const { userId } = useParams();
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    useEffect(() => {
+        async function getUserData() {
+            try {
+                const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
+                const res = await req.json();
+                console.log(res);
+                setUser(res.user);
+            } catch (err) {
+                console.error(err);
+            }        
+        }
+        getUserData();
+    }, [])
+    return (
+        <>
+            <div>
+                <h2>{user.firstName}</h2>
+                <h2>{user.lastName}</h2>
+            </div>
+            <h3>{user.username}</h3>
+            <h4>{user.status}</h4>
+            <h4>{user.about}</h4>
+            {+userId !== +currentUser.id && <Link to={`/chat/${userId}`}>Text {user.username}</Link>}
+        </>
+    )
+}
