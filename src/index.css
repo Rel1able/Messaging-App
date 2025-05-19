@@ -1,3 +1,9 @@
+:root{
+    --main-color: #6C3FBF;
+    --dark-main: #4A2A8C;
+    --secondary-color: 	#7E5CE1;
+}
+
 *{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;

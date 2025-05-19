@@ -1,5 +1,5 @@
 .contactsList{
-    background-color: rgb(59, 0, 102);
+    background-color: var(--dark-main);
     height: 100%;
     padding: 2rem;
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 .contactsList a{
-    color: rgb(242, 116, 116);
+    color: rgb(255, 255, 255);
     text-decoration: none;
 
 }

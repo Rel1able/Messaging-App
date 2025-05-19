@@ -1,8 +1,9 @@
 .navbar{
-    background-color: purple;
+    background-color: var(--main-color);
     height: 100%;
     padding: 2rem;
     list-style-type: none;
+    width: 10rem;
 }
 
 .list{
