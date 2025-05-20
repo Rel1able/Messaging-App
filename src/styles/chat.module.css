@@ -20,11 +20,33 @@
 }
 
 .sendMessageForm{
-
+    margin-bottom: 2rem;
 }
 
 .message{
 
 }
+.contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.icon2{
+    width: 3rem;
+}
 
+.icon{
+    height: 1.5rem;
+}
+
+.input{
+    height: 2rem;
+}
+
+.sendFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

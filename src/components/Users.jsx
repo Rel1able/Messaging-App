@@ -23,18 +23,29 @@ export default function Users() {
     }, [])
 
     return (
-        users.length > 0 ? <ul className={styles.container}>
-            {users.map((user, id) => {
-                return <li key={id}>
-                    <Link className={styles.user} to={`/profile/${user.id}`}>
-                        <p>{user.firstName}</p>
-                        <p> {user.lastName}</p>
-                        <p>@{user.username}</p>
-                    </Link>
+        <div className={styles.page}>
+            <h1 className={styles.title}>Users</h1>
+            {
+                users.length > 0 ?
+                <ul className={styles.container}>
+                    {users.map((user, id) => {
+                        return <li key={id}>
+                            <Link className={styles.user} to={`/profile/${user.id}`}>
+                                <div className={styles.imageContainer}>
+                                    <img className={styles.image} src="/account.svg" />
+                                </div>
                     
-                </li>
-            })}
-        </ul> : <div>Loading...</div>
+                                <p>{user.firstName}</p>
+                                <p> {user.lastName}</p>
+                                <p>@{user.username}</p>
+                            </Link>
+                            
+                        </li>
+                    })}
+                </ul> : <div>Loading...</div>
+            }
+        </div>
+        
         
     )
 }

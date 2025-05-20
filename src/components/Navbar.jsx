@@ -16,9 +16,9 @@ export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <ul className={styles.list}>
-                <li><Link to={`profile/${currentUser.id}`}>Profile</Link></li>
-                <li><Link to="/users">Users</Link></li>
-                <a onClick={handleLogout}>Log out</a>
+                <li><Link to={`profile/${currentUser.id}`}><img className={styles.icon} src="/profile.svg"/></Link></li>
+                <li><Link to="/users"><img className={styles.icon} src="/users.svg"/></Link></li>
+                <a onClick={handleLogout}><img className={styles.icon} src="/logout.svg"/></a>
             </ul>
         </nav>
     )

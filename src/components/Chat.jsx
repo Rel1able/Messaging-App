@@ -8,6 +8,7 @@ export default function Chat() {
     const [chatMessages, setChatMessages] = useState([]);
     const [message, setMessage] = useState("");
     const { userId } = useParams();
+    const [user, setUser] = useState({});
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
 
@@ -27,7 +28,18 @@ export default function Chat() {
 
     useEffect(() => {
         getChatData();
-    }, [])
+        async function getUserData() {
+            try {
+                const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
+                const res = await req.json();
+                console.log(res);
+                setUser(res.user);
+            } catch (err) {
+                console.error(err);
+            }        
+        }
+        getUserData();
+    }, [userId])
 
     async function sendMessage(e) {
         e.preventDefault();
@@ -57,6 +69,10 @@ export default function Chat() {
     
     return (
         <div className={styles.chatContainer}>
+            <div className={styles.contact}>
+                <img className={styles.icon2} src="/profile.svg"/>
+                {user.username}
+            </div>
             <ul className={styles.messagesList}>
                 {chatMessages.map((msg, id) => {
                     const messageAuthor = msg.sender.id === currentUser.id ? "You" : msg.sender.username;
@@ -69,10 +85,9 @@ export default function Chat() {
                 )}
             </ul>
             <form className={styles.sendMessageForm} onSubmit={e => sendMessage(e, userId)}>
-                <div>
-                    <label htmlFor="msg"></label>
-                    <input value={message} required onChange={e => setMessage(e.target.value)} type="text" id="msg" placeholder="Send your message..." />
-                    <button type="submit">Send</button>
+                <div className={styles.sendFormContainer}>
+                    <input className={styles.input} value={message} required onChange={e => setMessage(e.target.value)} type="text" id="msg" placeholder="Send your message..." />
+                    <button type="submit"><img className={styles.icon} src="/send.svg"/></button>
                 </div>
             </form>
         </div>

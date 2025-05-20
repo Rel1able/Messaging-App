@@ -4,15 +4,35 @@
     margin: auto;
     justify-content: center;
     align-items: center;
-    border: 2px solid;
     padding: 2rem;
     border-radius: 2rem;
+    width: 100%;
 }
 
 .btn{
     text-decoration: none;
-    padding: 1rem 0.5rem;
+    padding: 1.5rem 0.75rem;
     border-radius: 2rem;
     background-color: var(--main-color);
     color: white;
+    transition: 0.3s ease background;
+}
+
+.btn:hover{
+    background-color: var(--dark-main);
+}
+
+.name{
+    display: flex;
+    gap: 2rem;
+}
+
+.iconContainer{
+    background-color: var(--main-color);
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.icon{
+    width: 10rem;
 }

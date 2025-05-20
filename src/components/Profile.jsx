@@ -25,14 +25,18 @@ export default function Profile() {
     }, [])
     return (
         <div className={styles.container}>
-            <div>
+            <div className={styles.iconContainer}>
+                <img className={styles.icon} src="/account.svg"/>
+            </div>
+            <div className={styles.name}>
                 <h2>{user.firstName}</h2>
                 <h2>{user.lastName}</h2>
             </div>
             <h3>@{user.username}</h3>
+            {+userId !== +currentUser.id && <Link className={styles.btn} to={`/chat/${userId}`}>Text {user.username}</Link>}
             <h4 style={{color:statusColor }}>{user.status}</h4>
             <h4>{user.about}</h4>
-            {+userId !== +currentUser.id && <Link className={styles.btn} to={`/chat/${userId}`}>Text {user.username}</Link>}
+           
         </div>
     )
 }
