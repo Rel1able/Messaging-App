@@ -30,14 +30,14 @@ export default function Contacts() {
         contacts.length > 0 ? <ul className={styles.contactsList}>
             {contacts.map((user, id) => {
                 return <li key={id}>
-                    <Link to={`/chat/${user.id}`}>
-                        {user.username}
-                        {user.status}
+                    <Link  to={`/chat/${user.id}`}>
+                        <p>{user.username}</p>
+                       <p style={{color: user.status === "Offline" ? "red" : "green"}}>{user.status}</p>
                     </Link>
                     
                 </li>
             })}
-        </ul> : <div>You don't have any contacts Yet <Link to="/users">Try to find one</Link></div>
+        </ul> : <div className={styles.findContacts}>You don't have any contacts Yet <Link to="/users">Try to find one</Link></div>
         
     )
 }
