@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 import styles from "../styles/chat.module.css";
 
 export default function Chat() {
-    const { API_URL } = useContext(AppContext);
+    const { API_URL, setRefreshTrigger } = useContext(AppContext);
     const [chatMessages, setChatMessages] = useState([]);
     const [message, setMessage] = useState("");
     const { userId } = useParams();
@@ -46,6 +46,7 @@ export default function Chat() {
             const res = await req.json();
             setMessage("");
             getChatData()
+            setRefreshTrigger(prev => !prev);
             console.log("Message", res);
         } catch (err) {
             console.error(err);

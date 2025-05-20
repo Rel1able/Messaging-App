@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "../styles/contacts.module.css";
 
 export default function Contacts() {
-    const { API_URL } = useContext(AppContext);
+    const { API_URL,refreshTrigger } = useContext(AppContext);
     const [contacts, setContacts] = useState([]);
     useEffect(() => {
         async function getUsers() {
@@ -21,7 +21,7 @@ export default function Contacts() {
             }
         }
         getUsers();
-    }, [])
+    }, [refreshTrigger])
 
     return (
         contacts.length > 0 ? <ul className={styles.contactsList}>
