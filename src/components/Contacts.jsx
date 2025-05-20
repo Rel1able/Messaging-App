@@ -6,6 +6,7 @@ import styles from "../styles/contacts.module.css";
 export default function Contacts() {
     const { API_URL,refreshTrigger } = useContext(AppContext);
     const [contacts, setContacts] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         async function getUsers() {
             try {
@@ -16,6 +17,7 @@ export default function Contacts() {
                 const res = await req.json();
                 console.log(res.contacts);
                 setContacts(res.contacts);
+                setLoading(false);
             } catch (err) {
                 console.error(err);
             }
@@ -24,6 +26,7 @@ export default function Contacts() {
     }, [refreshTrigger])
 
     return (
+        loading ? <div>Loading...</div> : 
         contacts.length > 0 ? <ul className={styles.contactsList}>
             {contacts.map((user, id) => {
                 return <li key={id}>
