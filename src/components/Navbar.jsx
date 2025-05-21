@@ -1,14 +1,16 @@
 import { Link, useNavigate } from "react-router-dom"
 import styles from "../styles/navbar.module.css";
 import { AppContext } from "../context/AppContext";
-import { useContext } from "react";
+import { useContext} from "react";
 
 export default function Navbar() {
     const navigate = useNavigate();
     const { API_URL } = useContext(AppContext);
     const currentUser = JSON.parse(localStorage.getItem("user"))
 
+
     async function handleLogout() {
+        await fetch(`${API_URL}/users/${currentUser.id}/offline`)
         await fetch(`${API_URL}/auth/log-out`)
         localStorage.removeItem("user");
         navigate("/log-in")
