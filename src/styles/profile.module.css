@@ -9,6 +9,7 @@
     width: 100%;
 }
 
+
 .btn{
     text-decoration: none;
     padding: 1.5rem 0.75rem;
@@ -35,4 +36,9 @@
 
 .icon{
     width: 10rem;
+}
+
+.username{
+    margin-top: 0;
+    color: rgb(95, 94, 94);
 }

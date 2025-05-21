@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect, useContext , useRef} from "react";
 import { AppContext } from "../context/AppContext";
 import styles from "../styles/chat.module.css";
 
@@ -11,6 +11,7 @@ export default function Chat() {
     const [user, setUser] = useState({});
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
+    const lastMessageRef = useRef(null);
 
     async function getChatData() {
         try {
@@ -41,6 +42,10 @@ export default function Chat() {
         getUserData();
     }, [userId])
 
+    useEffect(() => {
+        lastMessageRef.current.scrollIntoView({behavior: "smooth"})
+    }, [chatMessages])
+
     async function sendMessage(e) {
         e.preventDefault();
         try {
@@ -69,10 +74,13 @@ export default function Chat() {
     
     return (
         <div className={styles.chatContainer}>
-            <div className={styles.contact}>
-                <img className={styles.icon2} src="/profile.svg"/>
-                {user.username}
-            </div>
+                <Link className={styles.contact} to={`/profile/${userId}`}>
+                    <img className={styles.icon2} src="/profile.svg" />
+                    <div className={styles.contactName}>
+                        <div>{user.firstName}</div>
+                        <div>{user.lastName}</div> 
+                    </div>
+                </Link>
             <ul className={styles.messagesList}>
                 {chatMessages.map((msg, id) => {
                     const messageAuthor = msg.sender.id === currentUser.id ? "You" : msg.sender.username;
@@ -83,6 +91,7 @@ export default function Chat() {
                         </li>
                     }
                 )}
+                <div ref={lastMessageRef} />
             </ul>
             <form className={styles.sendMessageForm} onSubmit={e => sendMessage(e, userId)}>
                 <div className={styles.sendFormContainer}>
