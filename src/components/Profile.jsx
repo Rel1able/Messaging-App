@@ -22,7 +22,7 @@ export default function Profile() {
             }        
         }
         getUserData();
-    }, [])
+    }, [userId])
     return (
         <div className={styles.container}>
             <div className={styles.iconContainer}>

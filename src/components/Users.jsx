@@ -5,6 +5,7 @@ import styles from "../styles/users.module.css";
 export default function Users() {
     const { API_URL } = useContext(AppContext);
     const [users, setUsers] = useState([]);
+    const [inputValue, setInputValue] = useState("");
     useEffect(() => {
         async function getUsers() {
             try {
@@ -22,13 +23,20 @@ export default function Users() {
         getUsers();
     }, [])
 
+    async function handleFilter(e) {
+        setInputValue(e.target.value.toLowerCase());
+    }
+
+    const filteredUsers = !inputValue ? users : users.filter((user) => user.username.toLowerCase().includes(inputValue))
+
     return (
         <div className={styles.page}>
             <h1 className={styles.title}>Users</h1>
+            <input value={inputValue} onChange={e => handleFilter(e)} type="text" placeholder="find user"/>
             {
                 users.length > 0 ?
                 <ul className={styles.container}>
-                    {users.map((user, id) => {
+                    {filteredUsers.map((user, id) => {
                         return <li key={id}>
                             <Link className={styles.user} to={`/profile/${user.id}`}>
                                 <div className={styles.imageContainer}>
