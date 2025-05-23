@@ -5,10 +5,18 @@ import styles from "../styles/profile.module.css";
 
 export default function Profile() {
     const [user, setUser] = useState({});
+    const [editing, setEditing] = useState(false);
+    const [aboutMe, setAboutMe] = useState("");
     const { API_URL } = useContext(AppContext);    
     const { userId } = useParams();
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const statusColor = user.status === "Offline" ? "red" : "green"
+
+    useEffect(() => {
+        if (user.about) {
+            setAboutMe(user.about)
+        }
+    }, [user])
 
     useEffect(() => {
         async function getUserData() {
@@ -23,6 +31,28 @@ export default function Profile() {
         }
         getUserData();
     }, [userId])
+
+    async function updateAboutSection() {
+        try {
+            const updatedUser = {...user, about: aboutMe}
+            localStorage.setItem("user", JSON.stringify(updatedUser));
+            const req = await fetch(`${API_URL}/users/${userId}/about`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({description: aboutMe})
+            })
+            const res = await req.json();
+            console.log(res);
+            setUser(updatedUser);
+            setEditing(false);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.iconContainer}>
@@ -34,8 +64,20 @@ export default function Profile() {
             </div>
             <h3 className={styles.username}>@{user.username}</h3>
             {+userId !== +currentUser.id && <Link className={styles.btn} to={`/chat/${userId}`}>Text {user.username}</Link>}
-            <h4 style={{color:statusColor }}>{user.status}</h4>
-            <h4>{user.about}</h4>
+            <h4 style={{ color: statusColor }}>{user.status}</h4>
+            {+userId === +currentUser.id &&
+                (editing ?
+                <>
+                    <h4>About me:</h4>
+                    <input type="text" value={aboutMe} onChange={e => setAboutMe(e.target.value)} />
+                    <button onClick={updateAboutSection}>Save</button>
+                </>
+                : <>
+                    <h4>About me: {user.about}</h4>
+                    <button onClick={() => setEditing(true)}>Edit</button>
+                </>
+            )}
+            
            
         </div>
     )
