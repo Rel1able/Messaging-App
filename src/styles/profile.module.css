@@ -15,7 +15,7 @@
     padding: 1rem;
     border-radius: 2rem;
     border: none;
-    width: 5rem;
+    min-width: 5rem;
     font-size: 1.2rem;
     background-color: var(--main-color);
     color: white;
@@ -26,6 +26,7 @@
     background-color: var(--dark-main);
     cursor: pointer;
 }
+
 
 .name{
     display: flex;
@@ -53,4 +54,26 @@
     gap: 0.5rem;
     justify-content: center;
     align-items: center;
+}
+
+.input{
+    border-radius: 2rem;
+    border: none;
+    background-color: var(--additional-color3);
+    padding: 0.5rem;
+    min-width: 15rem;
+}
+
+.input:focus{
+    outline: none;
+    color: white;
+    background-color: var(--main-color);
+}
+
+.input::placeholder{
+    color: black;
+}
+
+.input:focus::placeholder{
+    color: white;
 }

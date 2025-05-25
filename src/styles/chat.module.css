@@ -46,12 +46,22 @@
 }
 
 .icon{
-    height: 1.5rem;
+    height: 1.6rem;
     filter: invert(100%) sepia(4%) saturate(7489%) hue-rotate(288deg) brightness(109%) contrast(91%);
 }
 
 .input{
     height: 2rem;
+    border: 1px solid var(--main-color)
+}
+
+.input:focus{
+    outline: none;
+    background-color: var(--additional-color3);
+}
+
+.input:focus::placeholder{
+    color: black;
 }
 
 .sendFormContainer{

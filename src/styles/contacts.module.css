@@ -46,6 +46,7 @@
     background: white;
     border-radius: 2rem;
     padding-top: 1rem;
+    padding-bottom: 0.5rem;
 
 }
 
@@ -66,4 +67,25 @@
     position: relative;
     bottom: 2.25rem;
     left: 1.75rem;
+}
+
+
+.input{
+    border: none;
+    padding: 0.3rem;
+    border-radius: 2rem;
+    width: 8rem;
+}
+
+.input::placeholder{
+    color: black;
+}
+
+.input:focus{
+    outline: none;
+    background-color: var(--additional-color3);
+}
+
+.name{
+    text-align: center;
 }

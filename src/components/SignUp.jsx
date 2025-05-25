@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate, Link } from "react-router-dom";
+import styles from "../styles/auth.module.css";
 
 export default function SignUp() {
 
@@ -38,41 +39,41 @@ export default function SignUp() {
         }
     }
     return (
-        <>
-        <h1>Please create account</h1>
-        <form onSubmit={handleSubmit}>
-            <div>
+        <div className={styles.container}>
+        <h1 className={styles.title}>Please create account</h1>
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.inputDiv}>
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" required onChange={e => setFirstName(e.target.value)} />
+                <input placeholder="Enter your first name" className={styles.input} type="text" id="firstName" required onChange={e => setFirstName(e.target.value)} />
             </div>
-            <div>
+            <div className={styles.inputDiv}>
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" required onChange={e => setLastName(e.target.value)} />
+                <input placeholder="Enter your last name" className={styles.input}  type="text" id="lastName" required onChange={e => setLastName(e.target.value)} />
             </div>
-            <div>
+            <div className={styles.inputDiv}>
                 <label htmlFor="username">Username</label>
-                <input type="text" id="username" required onChange={e => setUsername(e.target.value)}/>
+                <input placeholder="Create a username" className={styles.input}  type="text" id="username" required onChange={e => setUsername(e.target.value)}/>
             </div>
-            <div>
+            <div className={styles.inputDiv}>
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" required onChange={e => setPassword(e.target.value)}/>
+                <input placeholder="Create a password" className={styles.input}  type="password" id="password" required onChange={e => setPassword(e.target.value)}/>
             </div>
-            <div>
+            <div className={styles.inputDiv}>
                 <label htmlFor="confPassword">Confirm password</label>
-                <input type="password" id="confPassword" required onChange={e => setConfPassword(e.target.value)}/>
+                <input placeholder="Confirm your password" className={styles.input}  type="password" id="confPassword" required onChange={e => setConfPassword(e.target.value)}/>
             </div>
-            <button type="submit">Sign Up</button>
+            <button className={styles.btn} type="submit">Sign Up</button>
             {
                 errors.length > 0 && (
-                    <ul>
+                    <ul className={styles.errorsList}>
                         {errors.map((err) => (
-                            <li>{err.msg}</li>
+                            <li className={styles.error}>{err.msg}</li>
                         ))}
                     </ul>
                 )
             }
             </form>
-            <h4>Already have an account? <Link to="/log-in">Log in</Link></h4>
-            </>
+            <h4 className={styles.note}>Already have an account? <Link to="/log-in">Log in</Link></h4>
+            </div>
     )
 }

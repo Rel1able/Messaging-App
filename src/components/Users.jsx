@@ -32,7 +32,7 @@ export default function Users() {
     return (
         <div className={styles.page}>
             <h1 className={styles.title}>Users</h1>
-            <input value={inputValue} onChange={e => handleFilter(e)} type="text" placeholder="Search"/>
+            <input className={styles.input} value={inputValue} onChange={e => handleFilter(e)} type="text" placeholder="Search"/>
             {
                 users.length > 0 ?
                 <ul className={styles.container}>

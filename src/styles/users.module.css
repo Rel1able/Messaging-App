@@ -47,3 +47,24 @@
     width: 100%;
     align-items: center;
 }
+
+.input{
+    border: none;
+    background-color: var(--additional-color3);
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.input::placeholder{
+    color: black;
+}
+
+.input:focus{
+    outline: none;
+    background-color: var(--dark-main);
+    color: white;
+}
+
+.input:focus::placeholder{
+    color: white;
+}

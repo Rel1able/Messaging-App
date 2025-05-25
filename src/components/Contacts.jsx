@@ -31,8 +31,10 @@ export default function Contacts() {
     return (
         loading ? <div>Loading...</div> : 
             contacts.length > 0 ?
-                <ul className={styles.contactsList}>
-                    <input value={inputValue} type="text" placeholder="Search" onChange={e => setInputValue(e.target.value.toLowerCase())} />
+                <ul className={styles.contactsList}>        
+                <input className={styles.input} value={inputValue} type="text" placeholder="Search" onChange={e => setInputValue(e.target.value.toLowerCase())} />
+
+                   
             {sortedContacts.map((user, id) => {
                 return <li className={styles.contactContainer} key={id}>
                     <Link className={styles.contact} to={`/chat/${user.id}`}>
@@ -40,7 +42,7 @@ export default function Contacts() {
                             <img className={styles.icon} src="/account.svg" />
                             <p className={styles.status} style={{background: user.status === "Offline" ? "red" : "green"}}></p>
                         </div>
-                        <p>{user.firstName} {user.lastName}</p>
+                        <p className={styles.name}>{user.firstName} {user.lastName}</p>
                      
                     </Link>
                     
