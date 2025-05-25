@@ -12,8 +12,11 @@
 
 .btn{
     text-decoration: none;
-    padding: 1.5rem 0.75rem;
+    padding: 1rem;
     border-radius: 2rem;
+    border: none;
+    width: 5rem;
+    font-size: 1.2rem;
     background-color: var(--main-color);
     color: white;
     transition: 0.3s ease background;
@@ -21,6 +24,7 @@
 
 .btn:hover{
     background-color: var(--dark-main);
+    cursor: pointer;
 }
 
 .name{
@@ -29,7 +33,7 @@
 }
 
 .iconContainer{
-    background-color: var(--main-color);
+    background-color: var(--additional-color3);
     border-radius: 50%;
     padding: 1rem;
 }
@@ -41,4 +45,12 @@
 .username{
     margin-top: 0;
     color: rgb(95, 94, 94);
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
 }

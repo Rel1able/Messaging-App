@@ -24,7 +24,9 @@
 }
 
 .message{
-
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    position: relative;
 }
 .contact{
     display: flex;
@@ -45,6 +47,7 @@
 
 .icon{
     height: 1.5rem;
+    filter: invert(100%) sepia(4%) saturate(7489%) hue-rotate(288deg) brightness(109%) contrast(91%);
 }
 
 .input{
@@ -61,4 +64,9 @@
     display: flex;
     gap: 0.5rem;
 
+}
+
+.btn{
+    background-color: var(--main-color);
+    border: none;
 }

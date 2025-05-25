@@ -28,7 +28,7 @@
 }
 
 .imageContainer{
-    background: var(--main-color);
+    background-color: var(--additional-color3);
     border-radius: 2rem;
     width: 100%;
 }

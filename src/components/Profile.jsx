@@ -67,15 +67,15 @@ export default function Profile() {
             <h4 style={{ color: statusColor }}>{user.status}</h4>
             {+userId === +currentUser.id &&
                 (editing ?
-                <>
+                <div className={styles.about}>
                     <h4>About me:</h4>
                     <input type="text" value={aboutMe} onChange={e => setAboutMe(e.target.value)} />
-                    <button onClick={updateAboutSection}>Save</button>
-                </>
-                : <>
+                    <button className={styles.btn} onClick={updateAboutSection}>Save</button>
+                </div>
+                : <div className={styles.about}>
                     <h4>About me: {user.about}</h4>
-                    <button onClick={() => setEditing(true)}>Edit</button>
-                </>
+                    <button className={styles.btn} onClick={() => setEditing(true)}>Edit</button>
+                </div>
             )}
             
            

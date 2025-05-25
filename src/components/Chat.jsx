@@ -83,11 +83,16 @@ export default function Chat() {
                 </Link>
             <ul className={styles.messagesList}>
                 {chatMessages.map((msg, id) => {
-                    const messageAuthor = msg.sender.id === currentUser.id ? "You" : msg.sender.username;
-                    const messagePosition = msg.sender.id === currentUser.id ? "end" : "start";
+                    const currentUserIsMessageAuthor = msg.sender.id === currentUser.id;
+                    const messageAuthor = currentUserIsMessageAuthor ? "You" : msg.sender.username;
+                    const messagePosition = currentUserIsMessageAuthor ? "end" : "start";
+                    const messageBackgroundColor = currentUserIsMessageAuthor ? "var(--main-color)" : "white";
+                    const messageColor = currentUserIsMessageAuthor ? "white" : "black";
+                    const messagePlacement = !currentUserIsMessageAuthor ? "2rem" : "";
+
                     return <li style={{alignSelf: messagePosition, textAlign: messagePosition}} className={styles.message} key={id}>
                             <p>{messageAuthor}</p>
-                            <p>{msg.text}</p>
+                            <p className={styles.message} style={{background: messageBackgroundColor, color: messageColor, right: messagePlacement}}>{msg.text}</p>
                         </li>
                     }
                 )}
@@ -96,7 +101,7 @@ export default function Chat() {
             <form className={styles.sendMessageForm} onSubmit={e => sendMessage(e, userId)}>
                 <div className={styles.sendFormContainer}>
                     <input className={styles.input} value={message} required onChange={e => setMessage(e.target.value)} type="text" id="msg" placeholder="Send your message..." />
-                    <button type="submit"><img className={styles.icon} src="/send.svg"/></button>
+                    <button className={styles.btn} type="submit"><img className={styles.icon} src="/send.svg"/></button>
                 </div>
             </form>
         </div>
