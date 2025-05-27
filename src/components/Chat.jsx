@@ -20,7 +20,7 @@ export default function Chat() {
                 throw new Error("Failed to fetch the data");
             }
             const res = await req.json();
-            console.log(res);
+            console.log("CHAT MESSAGES ARE",res);
             setChatMessages(res.chatMessages);
         } catch (err) {
             console.error(err);
@@ -86,13 +86,22 @@ export default function Chat() {
                     const currentUserIsMessageAuthor = msg.sender.id === currentUser.id;
                     const messageAuthor = currentUserIsMessageAuthor ? "You" : msg.sender.username;
                     const messagePosition = currentUserIsMessageAuthor ? "end" : "start";
-                    const messageBackgroundColor = currentUserIsMessageAuthor ? "var(--main-color)" : "white";
-                    const messageColor = currentUserIsMessageAuthor ? "white" : "black";
-                    const messagePlacement = !currentUserIsMessageAuthor ? "2rem" : "";
+                    const messageBackgroundColor = currentUserIsMessageAuthor ? "var(--main-color)" : "black";
+                    // const messageColor = currentUserIsMessageAuthor ? "white" : "black";
+                    const messagePlacement = !currentUserIsMessageAuthor ? "0.5rem" : "";
+                    const isoDate = new Date(msg.sent);
+                    const date = isoDate.toLocaleString("en-GB", {
+                        day: 'numeric',
+                        month: 'short',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                    });
 
                     return <li style={{alignSelf: messagePosition, textAlign: messagePosition}} className={styles.message} key={id}>
                             <p>{messageAuthor}</p>
-                            <p className={styles.message} style={{background: messageBackgroundColor, color: messageColor, right: messagePlacement}}>{msg.text}</p>
+                            <p>{date}</p>
+                            <p className={styles.message} style={{background: messageBackgroundColor, color: "white", right: messagePlacement}}>{msg.text}</p>
                         </li>
                     }
                 )}
