@@ -88,7 +88,8 @@ export default function Chat() {
                     const messagePosition = currentUserIsMessageAuthor ? "end" : "start";
                     const messageBackgroundColor = currentUserIsMessageAuthor ? "var(--main-color)" : "black";
                     // const messageColor = currentUserIsMessageAuthor ? "white" : "black";
-                    const messagePlacement = !currentUserIsMessageAuthor ? "0.5rem" : "";
+                    const messagePlacement = !currentUserIsMessageAuthor ? "0.5rem" : "-0.5rem";
+                    const datePlacement = !currentUserIsMessageAuthor ? "0.3rem" : "-0.3rem";
                     const isoDate = new Date(msg.sent);
                     const date = isoDate.toLocaleString("en-GB", {
                         day: 'numeric',
@@ -98,9 +99,9 @@ export default function Chat() {
                         hour12: true
                     });
 
-                    return <li style={{alignSelf: messagePosition, textAlign: messagePosition}} className={styles.message} key={id}>
-                            <p>{messageAuthor}</p>
-                            <p>{date}</p>
+                    return <li style={{ alignSelf: messagePosition, textAlign: messagePosition }} className={styles.messageContainer} key={id}>
+                            <p className={styles.author}>{messageAuthor}</p>
+                            <p style={{left: datePlacement}} className={styles.date}>{date}</p>
                             <p className={styles.message} style={{background: messageBackgroundColor, color: "white", right: messagePlacement}}>{msg.text}</p>
                         </li>
                     }

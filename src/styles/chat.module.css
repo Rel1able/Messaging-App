@@ -27,6 +27,8 @@
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     position: relative;
+   display: inline-block;
+   margin: 8px;
 }
 .contact{
     display: flex;
@@ -79,4 +81,14 @@
 .btn{
     background-color: var(--main-color);
     border: none;
+}
+
+.date{
+    margin: 0;
+    position: relative;
+    color: rgb(99, 99, 99);
+}
+
+.author{
+    margin: 8px;
 }
