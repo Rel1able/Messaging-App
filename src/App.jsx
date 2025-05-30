@@ -6,7 +6,7 @@ import { AppContext } from "./context/AppContext";
 function App() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const { API_URL} = useContext(AppContext);
+  const { API_URL, setIsRunning} = useContext(AppContext);
 
   
     useEffect(() => {
@@ -72,6 +72,23 @@ function App() {
       window.removeEventListener("beforeunload", setOffline)
     }
   }, [])
+
+
+  useEffect(() => {
+    let intervalId;
+    async function checkServer() {
+      const req = await fetch(`${API_URL}/auth/ping`);
+      if (!req.ok) {
+        throw new Error("Server is not running");
+      }
+      const res = await req.json();
+      setIsRunning(res);
+      clearInterval(intervalId);
+    }
+    intervalId = setInterval(checkServer, 2000);
+    return() =>  clearInterval(intervalId);
+  }, [])
+
   return (
     <div className="app-container">
       <div className="chat-container">

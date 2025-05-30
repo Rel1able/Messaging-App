@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "../styles/contacts.module.css";
 
 export default function Contacts() {
-    const { API_URL,refreshTrigger } = useContext(AppContext);
+    const { API_URL,refreshTrigger, isRunning} = useContext(AppContext);
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [inputValue, setInputValue] = useState("");
@@ -24,12 +24,12 @@ export default function Contacts() {
             }
         }
         getUsers();
-    }, [refreshTrigger])
+    }, [refreshTrigger, isRunning])
 
     const sortedContacts = !inputValue ? contacts : contacts.filter((contacts) => contacts.username.toLowerCase().includes(inputValue));
 
     return (
-        loading ? <div>Loading...</div> : 
+        loading ? <div className={styles.loading}>Loading...</div> : 
             contacts.length > 0 ?
                 <ul className={styles.contactsList}>        
                 <input className={styles.input} value={inputValue} type="text" placeholder="Search" onChange={e => setInputValue(e.target.value.toLowerCase())} />
