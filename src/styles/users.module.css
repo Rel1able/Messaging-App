@@ -17,7 +17,7 @@
     gap: 0.5rem;
     text-decoration: none;
     border-radius: 2rem;
-    background-color: var(--dark-main);
+    background: var(--dark-main);
     color: white;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@
 }
 
 .imageContainer{
-    background-color: var(--additional-color3);
+    background: linear-gradient(var(--additional-color2), var(--additional-color3));
     border-radius: 2rem;
     width: 100%;
 }
@@ -39,6 +39,7 @@
 
 .title{
     text-align: center;
+    text-shadow: 1px 1px 1px black;
 }
 
 .page{
@@ -50,21 +51,24 @@
 
 .input{
     border: none;
-    background-color: var(--additional-color3);
+    background-color: var(--additional-color2);
     padding: 0.5rem;
     border-radius: 2rem;
+    color: white;
 }
 
 .input::placeholder{
-    color: black;
+    color: white;
 }
 
 .input:focus{
     outline: none;
-    background-color: var(--dark-main);
-    color: white;
 }
 
-.input:focus::placeholder{
-    color: white;
+.loading{
+    margin: auto;
+    position: relative;
+    bottom: 15%;
+    font-size: 2.5rem;
+    font-weight: bold;
 }

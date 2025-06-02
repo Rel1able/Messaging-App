@@ -18,9 +18,24 @@ export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <ul className={styles.list}>
-                <li><Link to={`profile/${currentUser.id}`}><img className={styles.icon} src="/profile.svg"/></Link></li>
-                <li><Link to="/users"><img className={styles.icon} src="/users.svg"/></Link></li>
-                <a onClick={handleLogout}><img className={styles.icon} src="/logout.svg"/></a>
+                <li className={styles.iconParent}>
+                    <Link to={`profile/${currentUser.id}`}>
+                        <img className={styles.icon} src="/profile.svg" />
+                    </Link>
+                    <span className={styles.iconChild}>My Profile</span>
+                </li>
+                <li className={styles.iconParent}>
+                    <Link to="/users">
+                        <img className={styles.icon} src="/users.svg" />
+                    </Link>
+                    <span className={styles.iconChild}>Users</span>
+                </li>
+                <li className={styles.iconParent}>
+                    <a onClick={handleLogout}>
+                        <img className={styles.icon} src="/logout.svg" />
+                    </a>
+                    <span className={styles.iconChild}>Log out</span>
+                </li>
             </ul>
         </nav>
     )

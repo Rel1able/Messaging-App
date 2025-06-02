@@ -7,7 +7,7 @@ export default function Profile() {
     const [user, setUser] = useState({});
     const [editing, setEditing] = useState(false);
     const [aboutMe, setAboutMe] = useState("");
-    const { API_URL } = useContext(AppContext);    
+    const { API_URL, isRunning } = useContext(AppContext);    
     const { userId } = useParams();
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const statusColor = user.status === "Offline" ? "red" : "green"
@@ -30,7 +30,7 @@ export default function Profile() {
             }        
         }
         getUserData();
-    }, [userId])
+    }, [userId, isRunning])
 
     async function updateAboutSection() {
         try {
@@ -54,7 +54,8 @@ export default function Profile() {
     }
 
     return (
-        <div className={styles.container}>
+        user.firstName ? (
+            <div className={styles.container}>
             <div className={styles.iconContainer}>
                 <img className={styles.icon} src="/account.svg"/>
             </div>
@@ -80,5 +81,7 @@ export default function Profile() {
             
            
         </div>
+        ) : <div className={styles.loading}>Loading...</div>
+       
     )
 }

@@ -3,7 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 import styles from "../styles/users.module.css";
 export default function Users() {
-    const { API_URL } = useContext(AppContext);
+    const { API_URL, isRunning } = useContext(AppContext);
     const [users, setUsers] = useState([]);
     const [inputValue, setInputValue] = useState("");
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function Users() {
             }
         }
         getUsers();
-    }, [])
+    }, [isRunning])
 
     async function handleFilter(e) {
         setInputValue(e.target.value.toLowerCase());
@@ -50,7 +50,7 @@ export default function Users() {
                             
                         </li>
                     })}
-                </ul> : <div>Loading...</div>
+                </ul> : <div className={styles.loading}>Loading...</div>
             }
         </div>
         

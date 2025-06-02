@@ -12,6 +12,7 @@ export default function Chat() {
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
     const lastMessageRef = useRef(null);
+    const inputRef = useRef(null);
 
     async function getChatData() {
         try {
@@ -45,6 +46,10 @@ export default function Chat() {
     useEffect(() => {
         lastMessageRef.current.scrollIntoView({behavior: "smooth"})
     }, [chatMessages])
+
+    useEffect(() => {
+        inputRef.current.focus();
+    })
 
     async function sendMessage(e) {
         e.preventDefault();
@@ -110,7 +115,7 @@ export default function Chat() {
             </ul>
             <form className={styles.sendMessageForm} onSubmit={e => sendMessage(e, userId)}>
                 <div className={styles.sendFormContainer}>
-                    <input className={styles.input} value={message} required onChange={e => setMessage(e.target.value)} type="text" id="msg" placeholder="Send your message..." />
+                    <input ref={inputRef} className={styles.input} value={message} required onChange={e => setMessage(e.target.value)} type="text" id="msg" placeholder="Send your message..." />
                     <button className={styles.btn} type="submit"><img className={styles.icon} src="/send.svg"/></button>
                 </div>
             </form>

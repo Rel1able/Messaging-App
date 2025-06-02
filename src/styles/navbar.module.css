@@ -1,9 +1,9 @@
 .navbar{
     height: 100%;
-    padding: 2rem;
+    padding: 3rem;
     list-style-type: none;
-    width: 10rem;
-    background-color: var(--dark-main);
+    width: 5rem;
+    background-color: var(--additional-color2);
 }
 
 .list{
@@ -24,6 +24,29 @@
 
 
 .icon{
-    width: 3.5rem;
+    width: 2.5rem;
     filter: invert(100%) sepia(4%) saturate(7489%) hue-rotate(288deg) brightness(109%) contrast(91%);
+}
+
+.iconParent{
+    position: relative;
+}
+
+.iconChild{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 1rem;
+    background-color: var(--dark-main);
+    color: white;
+    border-radius: 2rem;
+    padding: 1rem;
+    display: inline;
+    white-space: nowrap;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.iconParent:hover .iconChild{
+    visibility: visible;
+    opacity: 1;
 }

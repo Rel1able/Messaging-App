@@ -54,22 +54,18 @@
 
 .input{
     height: 2rem;
-    border: 1px solid var(--main-color)
 }
 
 .input:focus{
     outline: none;
-    background-color: var(--additional-color3);
 }
 
-.input:focus::placeholder{
-    color: black;
-}
 
 .sendFormContainer{
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 1px 1px black;
 }
 
 .contactName{
@@ -79,8 +75,12 @@
 }
 
 .btn{
-    background-color: var(--main-color);
+    background: linear-gradient(var(--additional-color2), var(--dark-main));
     border: none;
+}
+
+.btn:hover{
+    cursor: pointer;
 }
 
 .date{
