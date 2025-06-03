@@ -50,3 +50,28 @@
     visibility: visible;
     opacity: 1;
 }
+
+.contactsLink{
+    opacity: 0;
+}
+
+@media (max-width: 768px){
+    .contactsLink{
+        opacity: 1;
+    }
+    .list{
+        flex-direction: row;
+
+    }
+    .navbar{
+        width: 100%;
+
+        padding: 0.2rem;
+        
+       
+    }
+    .list{
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -7,7 +7,6 @@ function App() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const { API_URL, setIsRunning} = useContext(AppContext);
-
   
     useEffect(() => {
       if (!user) {
@@ -93,7 +92,10 @@ function App() {
     <div className="app-container">
       <div className="chat-container">
         <Navbar />
-        <Contacts/>
+        <div className="contacts">
+          <Contacts/>
+        </div>
+        
       </div>
       <Outlet/>
     </div>

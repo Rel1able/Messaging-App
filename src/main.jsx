@@ -9,6 +9,7 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Users from './components/Users';
+import Contacts from './components/Contacts';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/chat/:userId", element: <Chat /> },
       { path: "/profile/:userId", element: <Profile /> },
-      {path: "/users", element: <Users/>}
+      { path: "/users", element: <Users /> },
+      { path: "/messages", element: <Contacts /> },
     ],
     errorElement: <ErrorPage/>
   },

@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+
 }
 
 .messagesList{
@@ -91,4 +92,16 @@
 
 .author{
     margin: 8px;
+}
+
+
+@media (max-width: 768px){
+    .chatContainer{
+        height: 75%;
+    }
+
+    .contact{
+        position: sticky;
+        top: 0;
+    }
 }

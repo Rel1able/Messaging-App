@@ -17,6 +17,7 @@ body, html{
     flex-direction: column;
     margin: 0;
     padding: 0;
+
 }
 
 .app-container{
@@ -27,8 +28,30 @@ body, html{
 
 .chat-container{
     display: flex;
+
 }
 
 #root{
     height: 100%;
+}
+
+
+.contacts{
+    display: block;
+}
+
+@media (max-width: 768px){
+    .contacts{
+        display: none;
+    }
+    .app-container{
+        flex-direction: column-reverse;
+        height: 100%;
+        width: 100%;
+    }
+    .chat-container{
+        width: 100%;
+        height: auto;
+    }
+
 }

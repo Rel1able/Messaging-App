@@ -47,6 +47,7 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
+
 }
 
 .input{
@@ -71,4 +72,11 @@
     bottom: 15%;
     font-size: 2.5rem;
     font-weight: bold;
+}
+
+@media (max-width: 768px){
+    .page{
+        height: 70%;
+        overflow: scroll;
+    }
 }
