@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       { path: "/chat/:userId", element: <Chat /> },
       { path: "/profile/:userId", element: <Profile /> },
       { path: "/users", element: <Users /> },
-      { path: "/messages", element: <Contacts /> },
+      { path: "/contacts", element: <Contacts /> },
     ],
     errorElement: <ErrorPage/>
   },

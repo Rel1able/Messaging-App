@@ -37,8 +37,8 @@ export default function Navbar() {
                     <span className={styles.iconChild}>Log out</span>
                 </li>
                 <li className={styles.contactsLink}>
-                    <Link to="/messages">
-                        <span>Contacts</span>
+                    <Link to="/contacts">
+                        <span>ic</span>
                     </Link>
                 </li>
             </ul>

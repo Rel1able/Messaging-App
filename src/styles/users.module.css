@@ -76,7 +76,10 @@
 
 @media (max-width: 768px){
     .page{
-        height: 70%;
-        overflow: scroll;
+        
+    }
+
+    .container{
+        height: 50%;
     }
 }

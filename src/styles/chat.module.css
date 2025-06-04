@@ -96,10 +96,6 @@
 
 
 @media (max-width: 768px){
-    .chatContainer{
-        height: 75%;
-    }
-
     .contact{
         position: sticky;
         top: 0;

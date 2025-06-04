@@ -62,6 +62,10 @@
     .list{
         flex-direction: row;
 
+
+    }
+    .icon{
+        width: 1.75rem;
     }
     .navbar{
         width: 100%;
