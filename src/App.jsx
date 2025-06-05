@@ -89,7 +89,9 @@ function App() {
   }, [])
 
   return (
-    <div className="app-container">
+    <div className="page">
+      <header className="header">Messaging app</header>
+      <div className="app-container">
       <div className="chat-container">
         <Navbar />
         <div className="contacts">
@@ -99,6 +101,8 @@ function App() {
       </div>
       <Outlet/>
     </div>
+    </div>
+    
   )
 }
 

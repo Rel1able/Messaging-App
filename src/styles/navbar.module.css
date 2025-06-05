@@ -52,16 +52,18 @@
 }
 
 .contactsLink{
+    display: none;
     opacity: 0;
 }
 
 @media (max-width: 768px){
     .contactsLink{
         opacity: 1;
+        display: block;
     }
     .list{
         flex-direction: row;
-
+        gap: 3rem;
 
     }
     .icon{
@@ -69,7 +71,6 @@
     }
     .navbar{
         width: 100%;
-
         padding: 0.2rem;
         
        
@@ -78,4 +79,5 @@
         justify-content: center;
         align-items: center;
     }
+
 }

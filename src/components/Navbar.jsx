@@ -24,6 +24,12 @@ export default function Navbar() {
                     </Link>
                     <span className={styles.iconChild}>My Profile</span>
                 </li>
+                <li className={styles.contactsLink}>
+                    <Link to="/contacts">
+                        <img className={styles.icon} src="/chat.svg"/>
+                        <span className={styles.iconChild}>Contacts</span>
+                    </Link>
+                </li>
                 <li className={styles.iconParent}>
                     <Link to="/users">
                         <img className={styles.icon} src="/users.svg" />
@@ -35,11 +41,6 @@ export default function Navbar() {
                         <img className={styles.icon} src="/logout.svg" />
                     </a>
                     <span className={styles.iconChild}>Log out</span>
-                </li>
-                <li className={styles.contactsLink}>
-                    <Link to="/contacts">
-                        <span>ic</span>
-                    </Link>
                 </li>
             </ul>
         </nav>

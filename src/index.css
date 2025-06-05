@@ -4,6 +4,7 @@
     --additional-color: rgb(227, 234, 254);
     --additional-color2: rgb(97, 97, 252);
     --additional-color3: rgb(185, 216, 243);
+    --additional-color4: rgb(91, 91, 230);
 }
 
 *{
@@ -39,6 +40,17 @@ body, html{
 .contacts{
     display: block;
 }
+
+.header{
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--additional-color4);
+    color: white;
+    font-weight: bold;
+}
+
+
 
 @media (max-width: 768px){
     .contacts{

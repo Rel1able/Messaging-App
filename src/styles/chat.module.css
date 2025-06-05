@@ -99,5 +99,8 @@
     .contact{
         position: sticky;
         top: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 9999;
     }
 }
