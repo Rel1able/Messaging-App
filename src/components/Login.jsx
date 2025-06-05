@@ -45,7 +45,7 @@ export default function Login() {
                 <input placeholder="Enter your password" className={styles.input} type="password" id="password" required onChange={e => setPassword(e.target.value)} />
             </div>
             <button className={styles.btn} type="submit">Log in</button>
-            {error && <p className={error}>{error}</p>}
+            {error && <p className={styles.error}>{error}</p>}
             </form>
             <h4 className={styles.note}>Don't have the account yet? <Link to="/sign-up">Sign up</Link></h4>
             </div>

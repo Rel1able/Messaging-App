@@ -81,3 +81,15 @@
     }
 
 }
+
+@media (min-width: 375px) and (max-width: 1024px){
+    .icon{
+        width: 2.5rem;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 768px){
+    .list{
+        gap: 5.5rem;
+    }
+}
