@@ -7,6 +7,7 @@ export default function Profile() {
     const [user, setUser] = useState({});
     const [editing, setEditing] = useState(false);
     const [aboutMe, setAboutMe] = useState("");
+    const [errors, setErrors] = useState([]);
     const { API_URL, isRunning } = useContext(AppContext);    
     const { userId } = useParams();
     const currentUser = JSON.parse(localStorage.getItem("user"));
@@ -34,8 +35,7 @@ export default function Profile() {
 
     async function updateAboutSection() {
         try {
-            const updatedUser = {...user, about: aboutMe}
-            localStorage.setItem("user", JSON.stringify(updatedUser));
+
             const req = await fetch(`${API_URL}/users/${userId}/about`, {
                 method: "PUT",
                 headers: {
@@ -45,7 +45,16 @@ export default function Profile() {
                 body: JSON.stringify({description: aboutMe})
             })
             const res = await req.json();
+            if (!req.ok) {
+                console.log("errors are", res.errors);
+                setErrors(res.errors);
+                return
+            }
+            
+            
             console.log(res);
+            const updatedUser = {...user, about: aboutMe}
+            localStorage.setItem("user", JSON.stringify(updatedUser));
             setUser(updatedUser);
             setEditing(false);
         } catch (err) {
@@ -72,10 +81,16 @@ export default function Profile() {
                     <h4>About me:</h4>
                     <input placeholder="Tell us something about you" className={styles.input} type="text" value={aboutMe} onChange={e => setAboutMe(e.target.value)} />
                     <button className={styles.btn} onClick={updateAboutSection}>Save</button>
+                    <ul className={styles.errorList}>
+                            {errors.map((err) => (
+                                <li className={styles.error}>{err.msg}</li>
+                            ))}
+                    </ul>
                 </div>
                 :  <div className={styles.about}>
                     <h4>About me: {user.about}</h4>
                     <button className={styles.btn} onClick={() => setEditing(true)}>Edit</button>
+                        
                 </div> 
             )}
             
