@@ -35,7 +35,7 @@ body, html{
 
 .chat-container{
     display: flex;
-
+    height: 100%;
 }
 
 
@@ -53,6 +53,13 @@ body, html{
 
 }
 
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
 
 @media (max-width: 768px){
     html{
@@ -63,7 +70,7 @@ body, html{
     }
     .app-container{
         flex-direction: column-reverse;
-        min-height: 100vh;
+        
         width: 100%;
         height: auto;
 
@@ -72,6 +79,8 @@ body, html{
         width: 100%;
         height: auto;
     }
+
+
 
 
 }
@@ -89,8 +98,9 @@ body, html{
 }
 
 @media (min-width: 1440px){
-    html{
-        font-size: 130%;
+    
+    .app-container{
+        overflow: hidden;
     }
 }
 

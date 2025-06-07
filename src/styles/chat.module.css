@@ -18,6 +18,7 @@
     padding: 2rem;
     scrollbar-color: var(--main-color) white;
     scrollbar-width: thin;
+    min-height: calc(100vh - 40vh);
 }
 
 .sendMessageForm{
@@ -103,5 +104,6 @@
         background-color: white;
         z-index: 9999;
     }
+
 }
 

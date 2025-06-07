@@ -7,10 +7,10 @@ export default function Navbar() {
     const navigate = useNavigate();
     const { API_URL } = useContext(AppContext);
     const currentUser = JSON.parse(localStorage.getItem("user"))
-
+    const profileLink = currentUser ? currentUser.id : "null"
 
     async function handleLogout() {
-        await fetch(`${API_URL}/users/${currentUser.id}/offline`)
+        currentUser ? await fetch(`${API_URL}/users/${currentUser.id}/offline`) : "null"
         await fetch(`${API_URL}/auth/log-out`)
         localStorage.removeItem("user");
         navigate("/log-in")
@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className={styles.navbar}>
             <ul className={styles.list}>
                 <li className={styles.iconParent}>
-                    <Link to={`profile/${currentUser.id}`}>
+                    <Link to={`profile/${profileLink}`}>
                         <img className={styles.icon} src="/profile.svg" />
                     </Link>
                     <span className={styles.iconChild}>My Profile</span>

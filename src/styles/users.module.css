@@ -75,10 +75,6 @@
 }
 
 @media (max-width: 768px){
-    .page{
-        
-    }
-
     .container{
         height: 50%;
     }

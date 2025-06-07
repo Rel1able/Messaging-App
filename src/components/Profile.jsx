@@ -82,8 +82,8 @@ export default function Profile() {
                     <input placeholder="Tell us something about you" className={styles.input} type="text" value={aboutMe} onChange={e => setAboutMe(e.target.value)} />
                     <button className={styles.btn} onClick={updateAboutSection}>Save</button>
                     <ul className={styles.errorList}>
-                            {errors.map((err) => (
-                                <li className={styles.error}>{err.msg}</li>
+                            {errors.map((err, id) => (
+                                <li key={id} className={styles.error}>{err.msg}</li>
                             ))}
                     </ul>
                 </div>
