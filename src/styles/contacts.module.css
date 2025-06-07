@@ -112,11 +112,12 @@
     }
     .findContacts{
         width: 100%;
-        margin: auto;
+
         background-color: white;
         color: black;
         font-size: 2rem;
         font-weight: bold;
+        
     }
     .findContacts a{
         color: black;

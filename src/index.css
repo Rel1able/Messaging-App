@@ -70,9 +70,8 @@ body, html{
     }
     .app-container{
         flex-direction: column-reverse;
-        
         width: 100%;
-        height: auto;
+        height:100%;
 
     }
     .chat-container{
