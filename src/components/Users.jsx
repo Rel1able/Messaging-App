@@ -14,7 +14,6 @@ export default function Users() {
                     throw new Error("Failed to get the data")
                 }
                 const res = await req.json();
-                console.log(res.users);
                 setUsers(res.users);
             } catch (err) {
                 console.error(err);

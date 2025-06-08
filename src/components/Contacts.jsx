@@ -16,7 +16,6 @@ export default function Contacts() {
                     throw new Error("Failed to get the data")
                 }
                 const res = await req.json();
-                console.log(res.contacts);
                 setContacts(res.contacts);
                 setLoading(false);
             } catch (err) {

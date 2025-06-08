@@ -24,7 +24,6 @@ export default function Profile() {
             try {
                 const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
                 const res = await req.json();
-                console.log(res);
                 setUser(res.user);
             } catch (err) {
                 console.error(err);
@@ -46,13 +45,12 @@ export default function Profile() {
             })
             const res = await req.json();
             if (!req.ok) {
-                console.log("errors are", res.errors);
+                console.error(res.errors);
                 setErrors(res.errors);
                 return
             }
             
-            
-            console.log(res);
+
             const updatedUser = {...user, about: aboutMe}
             localStorage.setItem("user", JSON.stringify(updatedUser));
             setUser(updatedUser);

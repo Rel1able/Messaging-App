@@ -21,7 +21,6 @@ export default function Chat() {
                 throw new Error("Failed to fetch the data");
             }
             const res = await req.json();
-            console.log("CHAT MESSAGES ARE",res);
             setChatMessages(res.chatMessages);
         } catch (err) {
             console.error(err);
@@ -34,7 +33,6 @@ export default function Chat() {
             try {
                 const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
                 const res = await req.json();
-                console.log(res);
                 setUser(res.user);
             } catch (err) {
                 console.error(err);
@@ -65,11 +63,9 @@ export default function Chat() {
             if (!req.ok) {
                 throw new Error("Failed to send message")
             }
-            const res = await req.json();
             setMessage("");
             getChatData()
             setRefreshTrigger(prev => !prev);
-            console.log("Message", res);
         } catch (err) {
             console.error(err);
         }

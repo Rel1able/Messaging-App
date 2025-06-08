@@ -12,7 +12,6 @@ function App() {
       if (!user) {
         navigate("/log-in")
       }
-      console.log(user)
     }, [])
   
     async function setOnline() {
@@ -27,8 +26,6 @@ function App() {
          if (!req.ok) {
            throw new Error("Failed to set status to online")
          }
-         const res = await req.json();
-         console.log(res)
        } catch (err) {
          console.error(err)
       }
@@ -47,8 +44,7 @@ function App() {
       if (!req.ok) {
         throw new Error("Failed to set status to offline")
       }
-      const res = await req.json();
-      console.log(res)
+
     } catch (err) {
       console.error(err)
     }

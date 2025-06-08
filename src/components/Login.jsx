@@ -29,7 +29,7 @@ export default function Login() {
             localStorage.setItem("user", JSON.stringify(res.user));
             navigate("/");
         }
-        console.log(res);
+        
     }
 
     return (

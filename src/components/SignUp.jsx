@@ -33,7 +33,6 @@ export default function SignUp() {
                 navigate("/log-in")
             }
             
-            console.log(res);
         } catch (err) {
             console.error(err);
         }
