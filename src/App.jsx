@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import Contacts from "./components/Contacts";
 import { useEffect, useContext } from "react";
 import { AppContext } from "./context/AppContext";
