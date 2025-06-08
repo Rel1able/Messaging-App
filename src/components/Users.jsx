@@ -9,7 +9,12 @@ export default function Users() {
     useEffect(() => {
         async function getUsers() {
             try {
-                const req = await fetch(`${API_URL}/users`, {credentials: "include"});
+                const req = await fetch(`${API_URL}/users`, {
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
                 if (!req.ok) {
                     throw new Error("Failed to get the data")
                 }

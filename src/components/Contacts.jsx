@@ -11,7 +11,12 @@ export default function Contacts() {
     useEffect(() => {
         async function getUsers() {
             try {
-                const req = await fetch(`${API_URL}/users/contacts`, {credentials: "include"});
+                const req = await fetch(`${API_URL}/users/contacts`, {
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
                 if (!req.ok) {
                     throw new Error("Failed to get the data")
                 }
