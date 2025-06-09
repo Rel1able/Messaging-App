@@ -5,12 +5,17 @@ import { useContext} from "react";
 
 export default function Navbar() {
     const navigate = useNavigate();
-    const { API_URL } = useContext(AppContext);
+    const { API_URL, token } = useContext(AppContext);
     const currentUser = JSON.parse(localStorage.getItem("user"))
     const profileLink = currentUser ? currentUser.id : "null"
 
     async function handleLogout() {
-        currentUser ? await fetch(`${API_URL}/users/${currentUser.id}/offline`) : "null"
+        currentUser ? await fetch(`${API_URL}/users/${currentUser.id}/offline`, {
+            headers: {
+                "Content-type": "application/json",
+                Authorization: "Bearer " + token
+            }
+        }) : "null"
         await fetch(`${API_URL}/auth/log-out`)
         localStorage.removeItem("user");
         localStorage.removeItem("token");
