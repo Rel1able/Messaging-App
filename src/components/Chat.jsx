@@ -68,8 +68,7 @@ export default function Chat() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({message}),
-                credentials: "include"
+                body: JSON.stringify({message})
             });
             if (!req.ok) {
                 throw new Error("Failed to send message")

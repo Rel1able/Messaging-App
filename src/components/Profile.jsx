@@ -22,7 +22,7 @@ export default function Profile() {
     useEffect(() => {
         async function getUserData() {
             try {
-                const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
+                const req = await fetch(`${API_URL}/users/${userId}`);
                 const res = await req.json();
                 setUser(res.user);
             } catch (err) {

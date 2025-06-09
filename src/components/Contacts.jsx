@@ -12,7 +12,6 @@ export default function Contacts() {
         async function getUsers() {
             try {
                 const req = await fetch(`${API_URL}/users/contacts`, {
-                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: "Bearer " + token
