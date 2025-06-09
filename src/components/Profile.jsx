@@ -70,13 +70,16 @@ export default function Profile() {
                 <h2>{user.firstName}</h2>
                 <h2>{user.lastName}</h2>
             </div>
-            <h3 className={styles.username}>@{user.username}</h3>
+                <h3 className={styles.username}>@{user.username}</h3>
+                <div className={styles.about}>
+                    <h4>About me: {user.about}</h4>     
+                </div> 
             {+userId !== +currentUser.id && <Link className={styles.btn} to={`/chat/${userId}`}>Text {user.firstName}</Link>}
             <h4 style={{ color: statusColor }}>{user.status}</h4>
             {+userId === +currentUser.id &&
                 (editing ?
                 <div className={styles.about}>
-                    <h4>About me:</h4>
+                    {/* <h4>About me:</h4> */}
                     <input placeholder="Tell us something about you" className={styles.input} type="text" value={aboutMe} onChange={e => setAboutMe(e.target.value)} />
                     <button className={styles.btn} onClick={updateAboutSection}>Save</button>
                     <ul className={styles.errorList}>

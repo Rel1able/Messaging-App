@@ -50,7 +50,7 @@ export default function Chat() {
             }        
         }
         getUserData();
-    }, [userId])
+    }, [userId, token])
 
     useEffect(() => {
         lastMessageRef.current.scrollIntoView({behavior: "smooth"})

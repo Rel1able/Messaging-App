@@ -25,7 +25,7 @@ export default function Users() {
             }
         }
         getUsers();
-    }, [isRunning])
+    }, [isRunning,token])
 
     async function handleFilter(e) {
         setInputValue(e.target.value.toLowerCase());

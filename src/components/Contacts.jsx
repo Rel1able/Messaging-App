@@ -28,7 +28,7 @@ export default function Contacts() {
             }
         }
         getUsers();
-    }, [refreshTrigger, isRunning])
+    }, [refreshTrigger, isRunning, token])
 
     const sortedContacts = !inputValue ? contacts : contacts.filter((contacts) => contacts.username.toLowerCase().includes(inputValue));
 
