@@ -6,7 +6,7 @@ import { AppContext } from "./context/AppContext";
 function App() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const { API_URL, setIsRunning} = useContext(AppContext);
+  const { API_URL, setIsRunning, token} = useContext(AppContext);
   
     useEffect(() => {
       if (!user) {
@@ -18,10 +18,10 @@ function App() {
       try {
         const req = await fetch(`${API_URL}/users/${user.id}/online`, {
            headers: {
-             "Content-Type": "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
            },
                method: "PUT",
-               credentials: "include"
         })
          if (!req.ok) {
            throw new Error("Failed to set status to online")
@@ -36,10 +36,11 @@ function App() {
     try {
      const req = await fetch(`${API_URL}/users/${user.id}/offline`, {
         headers: {
-          "Content-Type": "application/json",
+         "Content-Type": "application/json",
+         Authorization: "Bearer " + token
         },
-            method: "PUT",
-            credentials: "include"
+        method: "PUT",
+            
      })
       if (!req.ok) {
         throw new Error("Failed to set status to offline")
