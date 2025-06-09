@@ -10,7 +10,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const { API_URL } = useContext(AppContext);
+    const { API_URL, setToken } = useContext(AppContext);
     async function handleSubmit(e) {
         e.preventDefault();
         const req = await fetch(`${API_URL}/auth/log-in`, {
@@ -28,6 +28,7 @@ export default function Login() {
             setError("You have entered the wrong username or password. Please try again.")
         } else {
             setError("");
+            setToken(token);
             localStorage.setItem("token",token);
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/");

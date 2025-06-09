@@ -89,7 +89,6 @@ export default function Profile() {
                     </ul>
                 </div>
                 :  <div className={styles.about}>
-                    <h4>About me: {user.about}</h4>
                     <button className={styles.btn} onClick={() => setEditing(true)}>Edit</button>
                         
                 </div> 
