@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 import styles from "../styles/chat.module.css";
 
 export default function Chat() {
-    const { API_URL, setRefreshTrigger } = useContext(AppContext);
+    const { API_URL, setRefreshTrigger, token } = useContext(AppContext);
     const [chatMessages, setChatMessages] = useState([]);
     const [message, setMessage] = useState("");
     const { userId } = useParams();
@@ -16,7 +16,13 @@ export default function Chat() {
 
     async function getChatData() {
         try {
-            const req = await fetch(`${API_URL}/messages/${userId}`, {credentials: "include"});
+            const req = await fetch(`${API_URL}/messages/${userId}`, {
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: "Bearer " + token
+                }
+                
+            });
             if (!req.ok) {
                 throw new Error("Failed to fetch the data");
             }
@@ -31,7 +37,12 @@ export default function Chat() {
         getChatData();
         async function getUserData() {
             try {
-                const req = await fetch(`${API_URL}/users/${userId}`, {credentials: "include"});
+                const req = await fetch(`${API_URL}/users/${userId}`, {
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + token
+                    }
+                });
                 const res = await req.json();
                 setUser(res.user);
             } catch (err) {

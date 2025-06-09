@@ -3,16 +3,16 @@ import { AppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 import styles from "../styles/users.module.css";
 export default function Users() {
-    const { API_URL, isRunning } = useContext(AppContext);
+    const { API_URL, isRunning, token } = useContext(AppContext);
     const [users, setUsers] = useState([]);
     const [inputValue, setInputValue] = useState("");
     useEffect(() => {
         async function getUsers() {
             try {
                 const req = await fetch(`${API_URL}/users`, {
-                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
+                        Authorization: "Bearer " + token
                     },
                 });
                 if (!req.ok) {

@@ -8,7 +8,7 @@ export default function Profile() {
     const [editing, setEditing] = useState(false);
     const [aboutMe, setAboutMe] = useState("");
     const [errors, setErrors] = useState([]);
-    const { API_URL, isRunning } = useContext(AppContext);    
+    const { API_URL, isRunning, token } = useContext(AppContext);    
     const { userId } = useParams();
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const statusColor = user.status === "Offline" ? "red" : "green"
@@ -38,9 +38,9 @@ export default function Profile() {
             const req = await fetch(`${API_URL}/users/${userId}/about`, {
                 method: "PUT",
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    Authorization: "Bearer " + token
                 },
-                credentials: "include",
                 body: JSON.stringify({description: aboutMe})
             })
             const res = await req.json();

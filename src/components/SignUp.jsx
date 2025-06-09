@@ -24,7 +24,6 @@ export default function SignUp() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ firstName, lastName, username, password, confPassword }),
-                credentials: "include"
             });
             const res = await req.json();
             if (!req.ok) {

@@ -13,6 +13,7 @@ export default function Navbar() {
         currentUser ? await fetch(`${API_URL}/users/${currentUser.id}/offline`) : "null"
         await fetch(`${API_URL}/auth/log-out`)
         localStorage.removeItem("user");
+        localStorage.removeItem("token");
         navigate("/log-in")
     }
     return (
