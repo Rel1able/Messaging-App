@@ -18,15 +18,18 @@ export default function Login() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
-            credentials: "include" 
+            body: JSON.stringify({ username, password })
         })
         const res = await req.json();
+        const token = res.token;
+        const user = res.user;
+
         if (!req.ok) {
             setError("You have entered the wrong username or password. Please try again.")
         } else {
             setError("");
-            localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("token",token);
+            localStorage.setItem("user", JSON.stringify(user));
             navigate("/");
         }
         

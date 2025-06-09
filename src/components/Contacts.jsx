@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "../styles/contacts.module.css";
 
 export default function Contacts() {
-    const { API_URL,refreshTrigger, isRunning} = useContext(AppContext);
+    const { API_URL,refreshTrigger, isRunning, token} = useContext(AppContext);
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [inputValue, setInputValue] = useState("");
@@ -15,6 +15,7 @@ export default function Contacts() {
                     credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
+                        Authorization: "Bearer " + token
                     },
                 });
                 if (!req.ok) {
