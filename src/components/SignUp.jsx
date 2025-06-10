@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "../styles/auth.module.css";
@@ -13,7 +13,7 @@ export default function SignUp() {
     const [confPassword, setConfPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const { API_URL } = useContext(AppContext);
+    const { API_URL, isRunning, setIsRunning } = useContext(AppContext);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -36,8 +36,27 @@ export default function SignUp() {
             console.error(err);
         }
     }
+
+    useEffect(() => {
+            let intervalId;
+            async function checkServer() {
+              const req = await fetch(`${API_URL}/auth/ping`);
+              if (!req.ok) {
+                throw new Error("Server is not running");
+              }
+              const res = await req.json();
+              setIsRunning(res);
+              clearInterval(intervalId);
+            }
+            intervalId = setInterval(checkServer, 2000);
+            return() =>  clearInterval(intervalId);
+        }, [])
+        
+        
+    
     return (
-        <div className={styles.container}>
+        <>{ isRunning ? 
+            <div className={styles.container}>
         <h1 className={styles.title}>Please create account</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputDiv}>
@@ -73,5 +92,8 @@ export default function SignUp() {
             </form>
             <h4 className={styles.note}>Already have an account? <Link to="/log-in">Log in</Link></h4>
             </div>
+             :  <div className={styles.loading}>Server is loading, please wait</div>}
+        </>
+        
     )
 }

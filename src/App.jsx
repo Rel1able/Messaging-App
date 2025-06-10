@@ -6,7 +6,7 @@ import { AppContext } from "./context/AppContext";
 function App() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const { API_URL, setIsRunning, token} = useContext(AppContext);
+  const { API_URL,isRunning, setIsRunning, token} = useContext(AppContext);
   
     useEffect(() => {
       if (!user) {
@@ -60,7 +60,7 @@ function App() {
           setOffline();
           }
       }
-  }, [])
+  }, [isRunning])
 
   useEffect(() => {
     window.addEventListener("beforeunload",setOffline);

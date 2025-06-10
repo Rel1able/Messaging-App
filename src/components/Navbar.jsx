@@ -10,16 +10,18 @@ export default function Navbar() {
     const profileLink = currentUser ? currentUser.id : "null"
 
     async function handleLogout() {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        navigate("/log-in")
+        await fetch(`${API_URL}/auth/log-out`)
         currentUser ? await fetch(`${API_URL}/users/${currentUser.id}/offline`, {
             headers: {
                 "Content-type": "application/json",
                 Authorization: "Bearer " + token
             }
         }) : "null"
-        await fetch(`${API_URL}/auth/log-out`)
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
-        navigate("/log-in")
+
+
     }
     return (
         <nav className={styles.navbar}>
